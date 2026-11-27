@@ -22,7 +22,7 @@ The personal site of Eli Lin, IT support specialist and junior developer in Hsin
 | Language choice | First visit follows the browser language; a language picked in the switcher is remembered |
 | Motion | Scroll-driven animations (`animation-timeline: view()`), pure CSS |
 | Transitions | View Transitions API for the project filter, plus cross-document view transitions when switching language |
-| Colour | OKLCH design tokens on a dark graphite theme |
+| Look | Warm paper, ink and one cobalt accent in OKLCH tokens; Bricolage Grotesque over Instrument Sans |
 | Layout | Container queries, `dvh`, `text-wrap: balance` and `pretty` |
 | CJK type | Noto Sans TC and Noto Sans JP, loaded only on their own pages; `word-break: auto-phrase` for Japanese |
 | Accessibility | Full keyboard use, skip link, visible focus, every animation off under `prefers-reduced-motion` |
