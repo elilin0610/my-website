@@ -36,7 +36,7 @@ const stack = { fastapi: 'Python, FastAPI', nodered: 'Node-RED, MySQL', wpf: 'C#
 
 export const strings: Record<Lang, Strings> = {
   en: {
-    title: 'Eli Lin, IT support and junior developer',
+    title: 'Eli',
     description: 'Eli Lin is an IT support specialist and junior developer in Hsinchu, Taiwan. Help desk at Synopsys and Realtek, projects in Python, C# and Node-RED.',
     skip: 'Skip to content', langLabel: 'Language',
     nav: { case: 'The case', work: 'Projects', toolkit: 'Toolkit', experience: 'Experience', email: 'Email me' },
@@ -91,7 +91,7 @@ export const strings: Record<Lang, Strings> = {
   },
 
   zh: {
-    title: 'Eli Lin｜IT 支援與初階開發者',
+    title: 'Eli',
     description: 'Eli Lin，台灣新竹的 IT 支援人員與初階開發者。曾派駐 Synopsys、Realtek 服務台，做過 Python、C#、Node-RED 專案。',
     skip: '跳到主要內容', langLabel: '語言',
     nav: { case: '案例', work: '作品', toolkit: '技能', experience: '經歷', email: '寄信給我' },
@@ -146,7 +146,7 @@ export const strings: Record<Lang, Strings> = {
   },
 
   ja: {
-    title: 'Eli Lin｜IT サポート・ジュニア開発者',
+    title: 'Eli',
     description: 'Eli Lin は台湾・新竹の IT サポート兼ジュニア開発者です。Synopsys と Realtek のヘルプデスクに常駐し、Python、C#、Node-RED のプロジェクト経験があります。',
     skip: '本文へスキップ', langLabel: '言語',
     nav: { case: '事例', work: '制作物', toolkit: 'スキル', experience: '経歴', email: 'メールする' },
