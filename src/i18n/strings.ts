@@ -102,7 +102,7 @@ export const strings: Record<Lang, Strings> = {
       { name: '單一辦公室', status: '已排除', note: '所有據點都受到影響' },
       { name: 'ISP', status: '故障點', note: '用 ping 與 traceroute 定位', fault: true },
     ],
-    h1: '我找出\n哪裡壞了。', lead: 'Eli Lin，IT 支援與初階開發者，在台灣新竹。',
+    h1: '我找Bug', lead: 'Eli Lin，IT 支援與初階開發者，在台灣新竹。',
     ctaEmail: '寄信給 Eli', ctaCase: '看 VPN 案例',
     caseH: '一步一步排除', caseLead: '每做一次檢查，就排除一個嫌疑。',
     trail: [
