@@ -2,6 +2,7 @@
 import '../styles/site.css';
 import { strings, langs, email, linkedin, github, type Lang } from '../i18n/strings';
 import { about, stream } from '../i18n/about';
+import Icon from './Icon.astro';
 import fs from 'node:fs';
 
 interface Props { lang: Lang }
@@ -18,7 +19,6 @@ const extra = cjkFont[lang] ? `&${cjkFont[lang]}` : '';
 const abs = (p: string) => new URL(p, Astro.site).href;
 const pad = (n: number) => String(n + 1).padStart(2, '0');
 const a = about[lang];
-const short: Record<Lang, string> = { en: 'EN', de: 'DE', zh: '中', ja: '日', ko: '한' };
 // Drop a photo at public/portrait.jpg and it replaces the monogram.
 const hasPhoto = fs.existsSync('public/portrait.jpg');
 ---
@@ -74,18 +74,26 @@ const hasPhoto = fs.existsSync('public/portrait.jpg');
             <li><a href="#experience">{t.nav.experience}</a></li>
           </ul>
         </nav>
-        <button class="gear" type="button" popovertarget="settings" aria-label={a.settings}>
+        <ul class="bar__icons" aria-label={a.socialsLabel}>
+          {github && <li><a class="iconlink" href={github} rel="me noopener" target="_blank" aria-label="GitHub" title="GitHub"><Icon name="github" /></a></li>}
+          <li><a class="iconlink" href={linkedin} rel="me noopener" target="_blank" aria-label="LinkedIn" title="LinkedIn"><Icon name="linkedin" /></a></li>
+          <li><a class="iconlink" href={stream} rel="me noopener" target="_blank" aria-label={a.streamLabel} title={a.streamLabel}><Icon name="twitch" /></a></li>
+          <li class="bar__icons--wide"><a class="iconlink" href={`mailto:${email}`} aria-label={t.foot.email} title={t.foot.email}><Icon name="mail" /></a></li>
+        </ul>
+        <button class="gear" type="button" popovertarget="settings" aria-label={a.settings} title={a.settings}>
           <svg class="gear__icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
-          <span class="gear__lang" lang={here.html}>{short[lang]}</span>
         </button>
         <div class="settings" id="settings" popover>
           <p class="settings__h">{a.settings}</p>
-          <nav class="langs" aria-label={t.langLabel}>
-            <p class="settings__label">{t.langLabel}</p>
-            {langs.map((l) => (
-              <a href={l.path} hreflang={l.html} lang={l.html} data-lang={l.id} aria-current={l.id === lang ? 'page' : undefined}>{l.label}<span class="langs__code" aria-hidden="true">{short[l.id]}</span></a>
-            ))}
-          </nav>
+          <div class="setting">
+            <label class="setting__label" for="lang-select"><Icon name="globe" size={18} />{t.langLabel}</label>
+            <span class="select">
+              <select id="lang-select" data-lang-select>
+                {langs.map((l) => <option value={l.path} data-lang={l.id} lang={l.html} selected={l.id === lang}>{l.label}</option>)}
+              </select>
+              <Icon name="chevron" size={18} />
+            </span>
+          </div>
         </div>
       </div>
     </header>
@@ -108,9 +116,9 @@ const hasPhoto = fs.existsSync('public/portrait.jpg');
                 <a class="btn btn--line" href="#case">{t.ctaCase}</a>
               </div>
               <ul class="socials hero__actions" aria-label={a.socialsLabel}>
-                <li><a href={linkedin} rel="me noopener" target="_blank">LinkedIn</a></li>
-                {github && <li><a href={github} rel="me noopener" target="_blank">GitHub</a></li>}
-                <li><a href={stream} rel="me noopener" target="_blank">{a.streamLabel}</a></li>
+                {github && <li><a class="iconlink iconlink--lg" href={github} rel="me noopener" target="_blank" aria-label="GitHub" title="GitHub"><Icon name="github" size={22} /></a></li>}
+                <li><a class="iconlink iconlink--lg" href={linkedin} rel="me noopener" target="_blank" aria-label="LinkedIn" title="LinkedIn"><Icon name="linkedin" size={22} /></a></li>
+                <li><a class="iconlink iconlink--lg" href={stream} rel="me noopener" target="_blank" aria-label={a.streamLabel} title={a.streamLabel}><Icon name="twitch" size={22} /></a></li>
               </ul>
             </div>
           </div>
@@ -278,10 +286,10 @@ const hasPhoto = fs.existsSync('public/portrait.jpg');
       <div class="container foot__row">
         <p class="foot__legal">{t.foot.legal}</p>
         <ul class="foot__links">
-          <li><a href={`mailto:${email}`}>{t.foot.email}</a></li>
-          <li><a href={linkedin} rel="me noopener" target="_blank">LinkedIn</a></li>
-          {github && <li><a href={github} rel="me noopener" target="_blank">GitHub</a></li>}
-          <li><a href={stream} rel="me noopener" target="_blank">{a.streamLabel}</a></li>
+          <li><a class="iconlink" href={`mailto:${email}`} aria-label={t.foot.email} title={t.foot.email}><Icon name="mail" /></a></li>
+          <li><a class="iconlink" href={linkedin} rel="me noopener" target="_blank" aria-label="LinkedIn" title="LinkedIn"><Icon name="linkedin" /></a></li>
+          {github && <li><a class="iconlink" href={github} rel="me noopener" target="_blank" aria-label="GitHub" title="GitHub"><Icon name="github" /></a></li>}
+          <li><a class="iconlink" href={stream} rel="me noopener" target="_blank" aria-label={a.streamLabel} title={a.streamLabel}><Icon name="twitch" /></a></li>
           <li><a href="#top">{t.foot.top}</a></li>
         </ul>
       </div>
@@ -289,8 +297,12 @@ const hasPhoto = fs.existsSync('public/portrait.jpg');
 
     <script>
       // Remember a language picked with the switcher, so the first-visit redirect never overrides it.
-      document.querySelectorAll<HTMLAnchorElement>('.langs a[data-lang]').forEach((a) => {
-        a.addEventListener('click', () => { try { localStorage.setItem('lang', a.dataset.lang ?? 'en'); } catch {} });
+      // Language dropdown: remember the pick so the first-visit redirect never overrides it, then go there.
+      const langSelect = document.querySelector<HTMLSelectElement>('[data-lang-select]');
+      langSelect?.addEventListener('change', () => {
+        const opt = langSelect.selectedOptions[0];
+        try { localStorage.setItem('lang', opt.dataset.lang ?? 'en'); } catch {}
+        location.href = langSelect.value;
       });
 
       // Project filter, animated with the View Transitions API where it exists.
