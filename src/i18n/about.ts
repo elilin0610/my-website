@@ -1,12 +1,13 @@
 import type { Lang } from './strings';
 
 export const stream = 'https://stream.elilin.dev';
+export const resumePdf = '/eli-lin-resume.pdf';
 
 type Fact = { k: string; v: string };
 export type About = {
   hello: string; photoAlt: string; socialsLabel: string; settings: string;
   aboutNav: string; aboutH: string; aboutP: string[]; facts: Fact[];
-  streamLabel: string; streamNote: string;
+  streamLabel: string; streamNote: string; resume: string;
 };
 
 export const about: Record<Lang, About> = {
@@ -25,7 +26,7 @@ export const about: Record<Lang, About> = {
       { k: 'Languages', v: 'Mandarin, English, Japanese' },
       { k: 'Looking for', v: 'IT support or junior developer roles' },
     ],
-    streamLabel: 'Stream', streamNote: 'I also stream Apex, LoL and Valorant',
+    streamLabel: 'Stream', streamNote: 'I also stream Apex, LoL and Valorant', resume: 'Resume (PDF)',
   },
   de: {
     hello: 'Hallo, ich bin Eli Lin',
@@ -42,7 +43,7 @@ export const about: Record<Lang, About> = {
       { k: 'Sprachen', v: 'Mandarin, Englisch, Japanisch' },
       { k: 'Gesucht', v: 'IT-Support oder Junior-Entwickler' },
     ],
-    streamLabel: 'Stream', streamNote: 'Ich streame auch Apex, LoL und Valorant',
+    streamLabel: 'Stream', streamNote: 'Ich streame auch Apex, LoL und Valorant', resume: 'Lebenslauf, Englisch (PDF)',
   },
   zh: {
     hello: '嗨，我是 Eli Lin',
@@ -59,7 +60,7 @@ export const about: Record<Lang, About> = {
       { k: '語言', v: '中文、英文、日文' },
       { k: '正在找', v: 'IT 支援或初階開發的工作' },
     ],
-    streamLabel: '實況', streamNote: '我也有在實況 Apex、LoL、瓦',
+    streamLabel: '實況', streamNote: '我也有在實況 Apex、LoL、瓦', resume: '英文履歷（PDF）',
   },
   ja: {
     hello: 'こんにちは、Eli Lin です',
@@ -76,7 +77,7 @@ export const about: Record<Lang, About> = {
       { k: '言語', v: '中国語、英語、日本語' },
       { k: '希望', v: 'IT サポートまたはジュニア開発職' },
     ],
-    streamLabel: '配信', streamNote: 'Apex、LoL、VALORANT の配信もしています',
+    streamLabel: '配信', streamNote: 'Apex、LoL、VALORANT の配信もしています', resume: '英文レジュメ（PDF）',
   },
   ko: {
     hello: '안녕하세요, Eli Lin입니다',
@@ -93,6 +94,6 @@ export const about: Record<Lang, About> = {
       { k: '언어', v: '중국어, 영어, 일본어' },
       { k: '희망 직무', v: 'IT 지원 또는 주니어 개발' },
     ],
-    streamLabel: '방송', streamNote: 'Apex, LoL, 발로란트 방송도 합니다',
+    streamLabel: '방송', streamNote: 'Apex, LoL, 발로란트 방송도 합니다', resume: '영문 이력서 (PDF)',
   },
 };

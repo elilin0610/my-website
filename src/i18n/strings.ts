@@ -15,7 +15,7 @@ export const github = 'https://github.com/elilin0610';
 
 type Hop = { name: string; status: string; note: string; fault?: boolean };
 type Step = { act: string; tool: string; why: string };
-type Project = { name: string; kind: 'web' | 'data' | 'desktop'; stack: string; did: string };
+type Project = { name: string; kind: 'web' | 'data' | 'desktop'; stack: string; did: string; link?: string };
 type Job = { when: string; role: string; where: string; did: string };
 
 export type Strings = {
@@ -34,6 +34,11 @@ export type Strings = {
   foot: { email: string; top: string; legal: string };
 };
 
+const repo = {
+  finance: 'https://github.com/elilin0610/personal-finance-app',
+  jobs: 'https://github.com/elilin0610/findingjob-portfolio',
+  site: 'https://github.com/elilin0610/my-website',
+};
 const stack = { fastapi: 'Python, FastAPI', nodered: 'Node-RED, MySQL', wpf: 'C#, WPF' };
 
 export const strings: Record<Lang, Strings> = {
@@ -64,10 +69,12 @@ export const strings: Record<Lang, Strings> = {
     filters: { all: 'All', web: 'Web', data: 'Data', desktop: 'Desktop' },
     heads: ['Project', 'Stack', 'What I did'],
     projects: [
+      { name: 'Personal finance app', kind: 'web', stack: 'Java, Spring Boot', did: 'A budgeting web prototype built with Codex: sign-in, categories, transactions and monthly summaries, in Chinese, English and Japanese.', link: repo.finance },
+      { name: 'FindingJob', kind: 'data', stack: 'JavaScript, Node.js', did: 'An AI-assisted job search workflow that sorts listings, removes duplicates and tracks status. The public demo runs on made-up data.', link: repo.jobs },
+      { name: 'elilin.dev and stream page', kind: 'web', stack: 'Astro, Cloudflare Pages', did: 'These two sites, in five and three languages, deployed from GitHub.', link: repo.site },
       { name: 'NemoClaw web application', kind: 'web', stack: 'AI document app', did: 'Moved API key configuration out of the client and into backend environment variables.' },
       { name: 'Backend API', kind: 'web', stack: stack.fastapi, did: 'Built and tested REST endpoints.' },
       { name: 'Data integration', kind: 'data', stack: stack.nodered, did: 'A flow that writes incoming data to a MySQL database.' },
-      { name: 'Desktop game', kind: 'desktop', stack: stack.wpf, did: 'A small Windows game.' },
     ],
     count: '{n} of {t} projects shown',
     toolH: 'The toolkit',
@@ -119,10 +126,12 @@ export const strings: Record<Lang, Strings> = {
     filters: { all: 'Alle', web: 'Web', data: 'Daten', desktop: 'Desktop' },
     heads: ['Projekt', 'Technik', 'Was ich gemacht habe'],
     projects: [
+      { name: 'Finanz-App', kind: 'web', stack: 'Java, Spring Boot', did: 'Ein Budget-Prototyp im Web, gebaut mit Codex: Anmeldung, Kategorien, Buchungen und Monatsübersichten, auf Chinesisch, Englisch und Japanisch.', link: repo.finance },
+      { name: 'FindingJob', kind: 'data', stack: 'JavaScript, Node.js', did: 'Ein KI-gestützter Ablauf für die Jobsuche, der Stellen sortiert, Dubletten entfernt und den Status verfolgt. Die öffentliche Demo nutzt erfundene Daten.', link: repo.jobs },
+      { name: 'elilin.dev und Stream-Seite', kind: 'web', stack: 'Astro, Cloudflare Pages', did: 'Diese beiden Seiten, in fünf und drei Sprachen, direkt aus GitHub veröffentlicht.', link: repo.site },
       { name: 'NemoClaw-Webanwendung', kind: 'web', stack: 'KI-Dokumenten-App', did: 'API-Schlüssel aus dem Client in Umgebungsvariablen im Backend verlegt.' },
       { name: 'Backend-API', kind: 'web', stack: stack.fastapi, did: 'REST-Endpunkte gebaut und getestet.' },
       { name: 'Datenintegration', kind: 'data', stack: stack.nodered, did: 'Ein Flow, der eingehende Daten in eine MySQL-Datenbank schreibt.' },
-      { name: 'Desktop-Spiel', kind: 'desktop', stack: stack.wpf, did: 'Ein kleines Windows-Spiel.' },
     ],
     count: '{n} von {t} Projekten',
     toolH: 'Werkzeugkasten',
@@ -174,10 +183,12 @@ export const strings: Record<Lang, Strings> = {
     filters: { all: '全部', web: '網頁', data: '資料', desktop: '桌面' },
     heads: ['專案', '技術', '我做了什麼'],
     projects: [
+      { name: '個人理財 App', kind: 'web', stack: 'Java、Spring Boot', did: '和 Codex 協作做的記帳網頁原型：登入、分類、收支紀錄和月度摘要，有中英日三種語言。', link: repo.finance },
+      { name: 'FindingJob', kind: 'data', stack: 'JavaScript、Node.js', did: 'AI 協作的求職流程：整理職缺、去除重複並追蹤進度。公開展示版只用虛構資料。', link: repo.jobs },
+      { name: 'elilin.dev 與實況頁', kind: 'web', stack: 'Astro、Cloudflare Pages', did: '就是這兩個網站，分別有五種和三種語言，從 GitHub 自動部署。', link: repo.site },
       { name: 'NemoClaw 網頁應用', kind: 'web', stack: 'AI 文件應用', did: '把 API 金鑰設定從前端移到後端的環境變數。' },
       { name: '後端 API', kind: 'web', stack: stack.fastapi, did: '建立並測試 REST 端點。' },
       { name: '資料整合', kind: 'data', stack: stack.nodered, did: '把資料寫進 MySQL 資料庫的流程。' },
-      { name: '桌面遊戲', kind: 'desktop', stack: stack.wpf, did: '一款小型 Windows 遊戲。' },
     ],
     count: '顯示 {n} / {t} 個專案',
     toolH: '工具箱',
@@ -229,10 +240,12 @@ export const strings: Record<Lang, Strings> = {
     filters: { all: 'すべて', web: 'Web', data: 'データ', desktop: 'デスクトップ' },
     heads: ['プロジェクト', '技術', 'やったこと'],
     projects: [
+      { name: '家計簿アプリ', kind: 'web', stack: 'Java、Spring Boot', did: 'Codex と協作した家計簿の Web プロトタイプ。ログイン、カテゴリ、収支記録、月次サマリーに対応し、中国語・英語・日本語で使えます。', link: repo.finance },
+      { name: 'FindingJob', kind: 'data', stack: 'JavaScript、Node.js', did: '求人を整理し、重複を除き、進捗を追う AI 協作の求職ワークフロー。公開デモは架空のデータで動きます。', link: repo.jobs },
+      { name: 'elilin.dev と配信ページ', kind: 'web', stack: 'Astro、Cloudflare Pages', did: 'このサイトと配信ページ。5言語と3言語に対応し、GitHub から自動デプロイ。', link: repo.site },
       { name: 'NemoClaw Web アプリ', kind: 'web', stack: 'AI ドキュメントアプリ', did: 'API キーの設定をクライアントからバックエンドの環境変数へ移した。' },
       { name: 'バックエンド API', kind: 'web', stack: stack.fastapi, did: 'REST エンドポイントを構築し、テストした。' },
       { name: 'データ連携', kind: 'data', stack: stack.nodered, did: 'データを MySQL に書き込むフロー。' },
-      { name: 'デスクトップゲーム', kind: 'desktop', stack: stack.wpf, did: '小さな Windows ゲーム。' },
     ],
     count: '{t} 件中 {n} 件を表示',
     toolH: 'ツールキット',
@@ -284,10 +297,12 @@ export const strings: Record<Lang, Strings> = {
     filters: { all: '전체', web: '웹', data: '데이터', desktop: '데스크톱' },
     heads: ['프로젝트', '기술', '한 일'],
     projects: [
+      { name: '개인 가계부 앱', kind: 'web', stack: 'Java, Spring Boot', did: 'Codex와 협업해 만든 가계부 웹 프로토타입. 로그인, 분류, 수입·지출 기록, 월별 요약을 지원하고 중국어·영어·일본어로 쓸 수 있습니다.', link: repo.finance },
+      { name: 'FindingJob', kind: 'data', stack: 'JavaScript, Node.js', did: '채용 공고를 정리하고 중복을 없애며 진행 상황을 추적하는 AI 협업 구직 워크플로. 공개 데모는 가상의 데이터로 동작합니다.', link: repo.jobs },
+      { name: 'elilin.dev와 방송 페이지', kind: 'web', stack: 'Astro, Cloudflare Pages', did: '바로 이 두 사이트. 각각 5개, 3개 언어를 지원하고 GitHub에서 자동 배포됩니다.', link: repo.site },
       { name: 'NemoClaw 웹 애플리케이션', kind: 'web', stack: 'AI 문서 앱', did: 'API 키 설정을 클라이언트에서 백엔드 환경 변수로 옮겼습니다.' },
       { name: '백엔드 API', kind: 'web', stack: stack.fastapi, did: 'REST 엔드포인트를 만들고 테스트했습니다.' },
       { name: '데이터 연동', kind: 'data', stack: stack.nodered, did: '들어오는 데이터를 MySQL 데이터베이스에 기록하는 플로우.' },
-      { name: '데스크톱 게임', kind: 'desktop', stack: stack.wpf, did: '작은 Windows 게임.' },
     ],
     count: '프로젝트 {t}개 중 {n}개 표시',
     toolH: '툴킷',

@@ -1,7 +1,7 @@
 ---
 import '../styles/site.css';
 import { strings, langs, email, linkedin, github, type Lang } from '../i18n/strings';
-import { about, stream } from '../i18n/about';
+import { about, stream, resumePdf } from '../i18n/about';
 import Icon from './Icon.astro';
 import fs from 'node:fs';
 
@@ -9,7 +9,7 @@ interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = strings[lang];
 const here = langs.find((l) => l.id === lang)!;
-const filters = ['all', 'web', 'data', 'desktop'] as const;
+const filters = ['all', 'web', 'data'] as const;
 const cjkFont: Partial<Record<Lang, string>> = {
   zh: 'family=Noto+Sans+TC:wght@400;700;900',
   ja: 'family=Noto+Sans+JP:wght@400;700;900',
@@ -79,6 +79,7 @@ const hasPhoto = fs.existsSync('public/portrait.jpg');
           <li><a class="iconlink" href={linkedin} rel="me noopener" target="_blank" aria-label="LinkedIn" title="LinkedIn"><Icon name="linkedin" /></a></li>
           <li><a class="iconlink" href={stream} rel="me noopener" target="_blank" aria-label={a.streamLabel} title={a.streamLabel}><Icon name="twitch" /></a></li>
           <li class="bar__icons--wide"><a class="iconlink" href={`mailto:${email}`} aria-label={t.foot.email} title={t.foot.email}><Icon name="mail" /></a></li>
+          <li><a class="iconlink" href={resumePdf} download aria-label={a.resume} title={a.resume}><Icon name="download" /></a></li>
         </ul>
         <button class="gear" type="button" popovertarget="settings" aria-label={a.settings} title={a.settings}>
           <svg class="gear__icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
@@ -113,7 +114,7 @@ const hasPhoto = fs.existsSync('public/portrait.jpg');
               <p class="lead hero__lead">{t.lead}</p>
               <div class="actions hero__actions">
                 <a class="btn btn--primary" href={`mailto:${email}`}>{t.ctaEmail}</a>
-                <a class="btn btn--line" href="#case">{t.ctaCase}</a>
+                <a class="btn btn--line btn--icon" href={resumePdf} download><Icon name="download" size={18} />{a.resume}</a>
               </div>
               <ul class="socials hero__actions" aria-label={a.socialsLabel}>
                 {github && <li><a class="iconlink iconlink--lg" href={github} rel="me noopener" target="_blank" aria-label="GitHub" title="GitHub"><Icon name="github" size={22} /></a></li>}
@@ -210,7 +211,10 @@ const hasPhoto = fs.existsSync('public/portrait.jpg');
                 <span class="card__kind">{t.filters[p.kind]}</span>
                 <h3>{p.name}</h3>
                 <p>{p.did}</p>
-                <code class="code">{p.stack}</code>
+                <div class="card__foot">
+                  <code class="code">{p.stack}</code>
+                  {p.link && <a class="card__link" href={p.link} rel="noopener" target="_blank"><Icon name="github" size={18} /><span>GitHub</span></a>}
+                </div>
               </li>
             ))}
           </ul>
@@ -276,6 +280,7 @@ const hasPhoto = fs.existsSync('public/portrait.jpg');
             <a class="btn btn--ghost" href={linkedin} rel="me noopener" target="_blank">LinkedIn</a>
             {github && <a class="btn btn--ghost" href={github} rel="me noopener" target="_blank">GitHub</a>}
             <a class="btn btn--ghost" href={stream} rel="me noopener" target="_blank">{a.streamLabel}</a>
+            <a class="btn btn--ghost btn--icon" href={resumePdf} download><Icon name="download" size={18} />{a.resume}</a>
           </div>
           <p class="copy-status" aria-live="polite" data-copy-status></p>
         </div>

@@ -54,6 +54,14 @@ public/favicon.svg
 
 To change any text, edit `src/i18n/strings.ts`. The `Strings` type makes a missing translation a build error.
 
+## Resume PDF
+
+`src/pages/resume.astro` is the public, one-page resume (no legal name or phone number). After editing it, with `npm run dev` running, print it to `public/eli-lin-resume.pdf`:
+
+```sh
+chrome --headless=new --no-pdf-header-footer --virtual-time-budget=8000 --print-to-pdf=public/eli-lin-resume.pdf http://localhost:4321/resume/
+```
+
 ## Deploy
 
 Hosted on Cloudflare Pages from the `main` branch. Every push builds with `npm run build` and publishes `dist/`.

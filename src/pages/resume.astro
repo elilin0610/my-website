@@ -1,0 +1,149 @@
+---
+// Public resume: built from the private resumes in Documents\Resume, minus the legal name and phone number.
+// Printed to public/eli-lin-resume.pdf with headless Chrome (see README).
+import { email, linkedin, github } from '../i18n/strings';
+const site = 'https://elilin.dev';
+const strip = (u: string) => u.replace(/^https?:\/\/(www\.)?/, '');
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Eli Lin · Resume</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="head">
+        <h1>Eli Lin</h1>
+        <p class="role">IT Support and Junior Developer</p>
+        <p class="contact">
+          <span>Hsinchu, Taiwan</span>
+          <a href={`mailto:${email}`}>{email}</a>
+          <a href={site}>{strip(site)}</a>
+          <a href={github}>{strip(github)}</a>
+          <a href={linkedin}>{strip(linkedin)}</a>
+        </p>
+      </header>
+
+      <section>
+        <h2>Summary</h2>
+        <p>IT support specialist and junior developer with a year on an enterprise help desk for Synopsys and Realtek. I reproduce problems, rule out causes one at a time and write down what I found for the next team. I build web and data projects in Java, JavaScript, Python and C#, often working with AI tools such as Codex.</p>
+      </section>
+
+      <section>
+        <h2>Experience</h2>
+        <article class="item">
+          <div class="item__head"><h3>Contract Equipment Maintenance Technician</h3><span class="when">2026</span></div>
+          <p class="where">Onsite at a TSMC fab, Hsinchu</p>
+          <ul><li>Supported inspection and troubleshooting of wafer carrier load ports and interfaces for FOUP and FOSB carriers.</li></ul>
+        </article>
+        <article class="item">
+          <div class="item__head"><h3>IT Helpdesk Assistant Engineer, Welltake</h3><span class="when">Jun 2023 – May 2024</span></div>
+          <p class="where">Onsite at Synopsys and Realtek</p>
+          <ul>
+            <li>Handled about 10 to 20 support requests a week: desktops, laptops, software, printers, network and VPN.</li>
+            <li>Traced a VPN outage: checked Okta, reproduced it on a second laptop, confirmed it hit every site, then ran ping and tracert with the network engineers to isolate the ISP.</li>
+            <li>Prepared Windows computers for new employees, replaced laptop batteries, ran antivirus scans and checked meeting room equipment.</li>
+            <li>Kept the equipment inventory and support records, and explained troubleshooting steps and follow-up to users.</li>
+          </ul>
+        </article>
+      </section>
+
+      <section>
+        <h2>Projects</h2>
+        <article class="item">
+          <div class="item__head"><h3>Personal finance app</h3><span class="when">Java, Spring Boot</span></div>
+          <p>Budgeting web prototype built with Codex: sign-in, categories, transactions and monthly summaries in Chinese, English and Japanese. <a href="https://github.com/elilin0610/personal-finance-app">github.com/elilin0610/personal-finance-app</a></p>
+        </article>
+        <article class="item">
+          <div class="item__head"><h3>FindingJob</h3><span class="when">JavaScript, Node.js</span></div>
+          <p>AI-assisted job search workflow that sorts listings, removes duplicates and tracks status; public demo on made-up data. <a href="https://github.com/elilin0610/findingjob-portfolio">github.com/elilin0610/findingjob-portfolio</a></p>
+        </article>
+        <article class="item">
+          <div class="item__head"><h3>NemoClaw web application</h3><span class="when">AI document app</span></div>
+          <p>Moved API key configuration out of the client and into backend environment variables.</p>
+        </article>
+        <article class="item">
+          <div class="item__head"><h3>Data integration and backend API</h3><span class="when">Node-RED, MySQL, Python, FastAPI</span></div>
+          <p>A Node-RED flow that writes incoming data to MySQL; REST endpoints built and tested with FastAPI as coursework.</p>
+        </article>
+        <article class="item">
+          <div class="item__head"><h3>elilin.dev and stream.elilin.dev</h3><span class="when">Astro, Cloudflare Pages</span></div>
+          <p>Personal site in five languages and a stream page in three, deployed from GitHub.</p>
+        </article>
+      </section>
+
+      <section class="two">
+        <div>
+          <h2>Skills</h2>
+          <dl class="skills">
+            <dt>Support</dt><dd>Windows 10 and 11 deployment and imaging, HP and Dell laptops, printers, VPN, Okta</dd>
+            <dt>Network</dt><dd>TCP/IP, DNS, DHCP, ping, traceroute</dd>
+            <dt>Code</dt><dd>Python, JavaScript, Java, C#, C/C++, Visual Basic</dd>
+            <dt>Tools</dt><dd>Spring Boot, WPF, Node-RED, Deno, Astro, SQL, MySQL</dd>
+          </dl>
+        </div>
+        <div>
+          <h2>Education</h2>
+          <article class="item">
+            <div class="item__head"><h3>National Quemoy University</h3><span class="when">Sep 2024 – Jun 2026</span></div>
+            <p>Computer Science and Information Engineering, on leave, degree not completed. 4th of about 70 on the C/C++ programming midterm.</p>
+          </article>
+          <article class="item">
+            <div class="item__head"><h3>Hsiang Shan Senior High School</h3><span class="when">2020</span></div>
+            <p>Vocational program in data processing.</p>
+          </article>
+          <h2>Languages</h2>
+          <p>Mandarin (native) · English (TOEIC 755, 2025) · Japanese (conversational)</p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
+
+<style>
+  :root { --ink: #141414; --muted: #555; --rule: #141414; --blue: #1d7fd0; }
+  * { box-sizing: border-box; }
+  html { background: #e9e9e9; }
+  body { margin: 0; color: var(--ink); font: 400 9.4pt/1.36 "Archivo", Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; text-decoration: none; }
+  .page { width: 210mm; min-height: 297mm; margin: 24px auto; padding: 11mm 14mm; background: #fff; box-shadow: 0 2px 16px rgba(0,0,0,.12); }
+  h1, h2, h3, p, ul, dl { margin: 0; }
+  .head { padding-bottom: 4mm; border-bottom: 2px solid var(--rule); }
+  h1 { font-size: 27pt; font-weight: 900; font-stretch: 112%; letter-spacing: -0.04em; line-height: 0.95; }
+  .role { margin-top: 1.5mm; font-size: 12pt; font-weight: 700; }
+  .contact { display: flex; flex-wrap: wrap; gap: 0 4mm; margin-top: 1.5mm; font-size: 8.8pt; color: var(--muted); }
+  .contact a { color: var(--blue); }
+  section { margin-top: 3.4mm; }
+  h2 { margin-bottom: 1.4mm; padding-bottom: 0.6mm; border-bottom: 1px solid var(--rule); font-size: 10.5pt; font-weight: 900; text-transform: none; }
+  .item { margin-bottom: 1.7mm; }
+  .item__head { display: flex; justify-content: space-between; align-items: baseline; gap: 4mm; }
+  h3 { font-size: 10pt; font-weight: 800; }
+  .when { flex: none; font-size: 8.8pt; color: var(--muted); font-weight: 600; }
+  .where { font-size: 9pt; color: var(--muted); }
+  ul { padding-left: 4.5mm; }
+  li { margin-top: 0.3mm; }
+  .item p a { color: var(--blue); }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 7mm; }
+  .two h2 + * { margin-top: 0; }
+  .two div > h2:not(:first-child) { margin-top: 3mm; }
+  .skills { display: grid; grid-template-columns: 17mm 1fr; gap: 1mm 3mm; }
+  .skills dt { font-weight: 800; }
+  .skills dd { margin: 0; }
+  @page { size: A4; margin: 0; }
+  @media print {
+    html { background: #fff; }
+    .page { margin: 0; min-height: 0; box-shadow: none; }
+  }
+  @media screen and (max-width: 220mm) {
+    .page { width: auto; min-height: 0; margin: 0; padding: 20px 16px; box-shadow: none; }
+    .two { grid-template-columns: 1fr; }
+    .item__head { flex-wrap: wrap; }
+  }
+</style>
