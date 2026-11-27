@@ -17,6 +17,7 @@ const extra = cjkFont[lang] ? `&${cjkFont[lang]}` : '';
 const abs = (p: string) => new URL(p, Astro.site).href;
 const pad = (n: number) => String(n + 1).padStart(2, '0');
 const a = about[lang];
+const short: Record<Lang, string> = { en: 'EN', de: 'DE', zh: '中', ja: '日' };
 // Drop a photo at public/portrait.jpg and it replaces the monogram.
 const hasPhoto = fs.existsSync('public/portrait.jpg');
 ---
@@ -47,9 +48,10 @@ const hasPhoto = fs.existsSync('public/portrait.jpg');
         try {
           const saved = localStorage.getItem('lang');
           const pref = (navigator.languages || [navigator.language]).map((l) => l.toLowerCase());
-          const first = saved || pref.find((l) => l.startsWith('zh') || l.startsWith('ja') || l.startsWith('en')) || 'en';
+          const first = saved || pref.find((l) => /^(zh|ja|de|en)/.test(l)) || 'en';
           if (first.startsWith('zh')) location.replace('/zh/');
           else if (first.startsWith('ja')) location.replace('/ja/');
+          else if (first.startsWith('de')) location.replace('/de/');
         } catch (e) {}
       </script>
     )}
@@ -70,11 +72,19 @@ const hasPhoto = fs.existsSync('public/portrait.jpg');
             <li><a href="#experience">{t.nav.experience}</a></li>
           </ul>
         </nav>
-        <nav class="langs" aria-label={t.langLabel}>
-          {langs.map((l) => (
-            <a href={l.path} hreflang={l.html} lang={l.html} data-lang={l.id} aria-current={l.id === lang ? 'page' : undefined}>{l.label}</a>
-          ))}
-        </nav>
+        <button class="gear" type="button" popovertarget="settings" aria-label={a.settings}>
+          <svg class="gear__icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+          <span class="gear__lang" lang={here.html}>{short[lang]}</span>
+        </button>
+        <div class="settings" id="settings" popover>
+          <p class="settings__h">{a.settings}</p>
+          <nav class="langs" aria-label={t.langLabel}>
+            <p class="settings__label">{t.langLabel}</p>
+            {langs.map((l) => (
+              <a href={l.path} hreflang={l.html} lang={l.html} data-lang={l.id} aria-current={l.id === lang ? 'page' : undefined}>{l.label}<span class="langs__code" aria-hidden="true">{short[l.id]}</span></a>
+            ))}
+          </nav>
+        </div>
       </div>
     </header>
 

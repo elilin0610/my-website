@@ -4,7 +4,7 @@ export const stream = 'https://stream.elilin.dev';
 
 type Fact = { k: string; v: string };
 export type About = {
-  hello: string; photoAlt: string; socialsLabel: string;
+  hello: string; photoAlt: string; socialsLabel: string; settings: string;
   aboutNav: string; aboutH: string; aboutP: string[]; facts: Fact[];
   streamLabel: string; streamNote: string;
 };
@@ -13,7 +13,7 @@ export const about: Record<Lang, About> = {
   en: {
     hello: 'Hi, I’m Eli Lin',
     photoAlt: 'A black and white cat stretched out on a sofa',
-    socialsLabel: 'Elsewhere',
+    socialsLabel: 'Elsewhere', settings: 'Settings',
     aboutNav: 'About',
     aboutH: 'About me',
     aboutP: [
@@ -27,10 +27,27 @@ export const about: Record<Lang, About> = {
     ],
     streamLabel: 'Stream', streamNote: 'I also stream Apex, LoL and Valorant',
   },
+  de: {
+    hello: 'Hallo, ich bin Eli Lin',
+    photoAlt: 'Eine schwarz-weiße Katze, die sich auf dem Sofa ausstreckt',
+    socialsLabel: 'Anderswo', settings: 'Einstellungen',
+    aboutNav: 'Über mich',
+    aboutH: 'Über mich',
+    aboutP: [
+      'Ich bin IT-Support-Spezialist und Junior-Entwickler aus Hsinchu, Taiwan.',
+      'Ein Jahr lang habe ich über Welltake den Helpdesk für Synopsys und Realtek betreut: Laptops für neue Mitarbeitende vorbereitet und Netzwerk- und VPN-Fehler bis zur Ursache verfolgt. Nebenbei baue ich kleine Tools und Web-Apps in Python, C# und Node-RED.',
+    ],
+    facts: [
+      { k: 'Standort', v: 'Hsinchu, Taiwan' },
+      { k: 'Sprachen', v: 'Mandarin, Englisch, Japanisch' },
+      { k: 'Gesucht', v: 'IT-Support oder Junior-Entwickler' },
+    ],
+    streamLabel: 'Stream', streamNote: 'Ich streame auch Apex, LoL und Valorant',
+  },
   zh: {
     hello: '嗨，我是 Eli Lin',
     photoAlt: '一隻黑白貓攤在沙發上',
-    socialsLabel: '其他平台',
+    socialsLabel: '其他平台', settings: '設定',
     aboutNav: '關於我',
     aboutH: '關於我',
     aboutP: [
@@ -47,7 +64,7 @@ export const about: Record<Lang, About> = {
   ja: {
     hello: 'こんにちは、Eli Lin です',
     photoAlt: 'ソファでくつろぐ白黒の猫',
-    socialsLabel: 'リンク',
+    socialsLabel: 'リンク', settings: '設定',
     aboutNav: '自己紹介',
     aboutH: '自己紹介',
     aboutP: [

@@ -1,8 +1,8 @@
 # elilin.dev
 
-The personal site of Eli Lin, IT support specialist and junior developer in Hsinchu, Taiwan. One page, in three languages.
+The personal site of Eli Lin, IT support specialist and junior developer in Hsinchu, Taiwan. One page, in four languages.
 
-**Live:** [elilin.dev](https://elilin.dev) · [中文](https://elilin.dev/zh/) · [日本語](https://elilin.dev/ja/)
+**Live:** [elilin.dev](https://elilin.dev) · [Deutsch](https://elilin.dev/de/) · [中文](https://elilin.dev/zh/) · [日本語](https://elilin.dev/ja/)
 
 [中文說明](#中文說明)
 
@@ -18,7 +18,7 @@ The personal site of Eli Lin, IT support specialist and junior developer in Hsin
 | | |
 |---|---|
 | Framework | [Astro 7](https://astro.build), static output, almost no client JavaScript |
-| Languages | Astro i18n routing: English at `/`, Chinese at `/zh/`, Japanese at `/ja/`, linked with `hreflang` |
+| Languages | Astro i18n routing: English at `/`, German at `/de/`, Chinese at `/zh/`, Japanese at `/ja/`, linked with `hreflang` |
 | Language choice | First visit follows the browser language; a language picked in the switcher is remembered |
 | Motion | Scroll-driven animations (`animation-timeline: view()`), pure CSS |
 | Transitions | View Transitions API for the project filter, plus cross-document view transitions when switching language |
@@ -42,9 +42,9 @@ npm run preview   # serve the built site
 
 ```
 src/
-  i18n/strings.ts        all copy for all three languages, plus email, LinkedIn, GitHub
+  i18n/strings.ts        all copy for all four languages, plus email, LinkedIn, GitHub
   components/Home.astro  the page itself, shared by every language
-  pages/                 index.astro, zh/index.astro, ja/index.astro
+  pages/                 index.astro, de/index.astro, zh/index.astro, ja/index.astro
   styles/
     tokens.css           colours, fonts, spacing (per-language font stacks at the end)
     base.css             reset, focus ring, reduced motion
@@ -62,10 +62,10 @@ Hosted on Cloudflare Pages from the `main` branch. Every push builds with `npm r
 
 ## 中文說明
 
-Eli Lin 的個人網站，提供英文、中文、日文三種語言。
+Eli Lin 的個人網站，提供英文、德文、中文、日文四種語言。
 
 - **技術**：Astro 7 靜態網站；用捲動驅動動畫、View Transitions API、OKLCH 色彩、Container queries 等新的 CSS 功能。
-- **語言**：英文在 `/`，中文在 `/zh/`，日文在 `/ja/`。第一次造訪會依瀏覽器語言自動切換，手動選過的語言會被記住。
+- **語言**：英文在 `/`，德文在 `/de/`，中文在 `/zh/`，日文在 `/ja/`。第一次造訪會依瀏覽器語言自動切換，手動選過的語言會被記住。
 - **修改文字**：所有文字都在 `src/i18n/strings.ts`。
 - **本機執行**：`npm install` 後執行 `npm run dev`。
 - **部署**：推送到 `main` 後，Cloudflare Pages 會自動建置並上線。

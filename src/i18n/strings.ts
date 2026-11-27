@@ -1,8 +1,9 @@
-export type Lang = 'en' | 'zh' | 'ja';
+export type Lang = 'en' | 'de' | 'zh' | 'ja';
 
 export const langs: { id: Lang; label: string; html: string; path: string }[] = [
-  { id: 'en', label: 'EN', html: 'en', path: '/' },
-  { id: 'zh', label: '中文', html: 'zh-Hant-TW', path: '/zh/' },
+  { id: 'en', label: 'English', html: 'en', path: '/' },
+  { id: 'de', label: 'Deutsch', html: 'de', path: '/de/' },
+  { id: 'zh', label: '中文（繁體）', html: 'zh-Hant-TW', path: '/zh/' },
   { id: 'ja', label: '日本語', html: 'ja', path: '/ja/' },
 ];
 
@@ -88,6 +89,61 @@ export const strings: Record<Lang, Strings> = {
     contactLead: 'Open to IT support and junior developer roles, in Mandarin, English or some Japanese.',
     copy: 'Copy address', copied: 'Copied', copyOk: 'The address is on your clipboard.', copyFail: 'Copying is blocked here. Select the address above instead.',
     foot: { email: 'Email', top: 'Back to top', legal: '© 2026 Eli Lin. Hsinchu, Taiwan.' },
+  },
+
+  de: {
+    title: 'Eli',
+    description: 'Eli Lin ist IT-Support-Spezialist und Junior-Entwickler in Hsinchu, Taiwan. Helpdesk bei Synopsys und Realtek, Projekte in Python, C# und Node-RED.',
+    skip: 'Zum Inhalt springen', langLabel: 'Sprache',
+    nav: { case: 'Der Fall', work: 'Projekte', toolkit: 'Werkzeuge', experience: 'Erfahrung', email: 'E-Mail' },
+    traceCap: 'VPN-Ausfall bei Synopsys', traceSub: 'vom Helpdesk aus verfolgt',
+    hops: [
+      { name: 'Laptop', status: 'Ausgeschlossen', note: 'Ein zweites Gerät scheiterte genauso' },
+      { name: 'Okta-Anmeldung', status: 'Ausgeschlossen', note: 'Konten meldeten sich normal an' },
+      { name: 'Ein Standort', status: 'Ausgeschlossen', note: 'Alle Standorte waren betroffen' },
+      { name: 'ISP', status: 'Fehler', note: 'Mit ping und traceroute eingegrenzt', fault: true },
+    ],
+    h1: 'Ich finde, wo es hakt.', lead: 'Eli Lin, IT-Support und Junior-Entwickler in Hsinchu, Taiwan.',
+    ctaEmail: 'E-Mail an Eli', ctaCase: 'Zum VPN-Fall',
+    caseH: 'Der Ausfall, Schritt für Schritt', caseLead: 'Jede Prüfung schloss einen Verdacht aus.',
+    trail: [
+      { act: 'Okta geprüft', tool: 'Okta', why: 'Die Anmeldung funktionierte, die Konten waren also nicht schuld.' },
+      { act: 'Mit einem zweiten Gerät getestet', tool: 'Zweiter Laptop', why: 'Gleicher Fehler, also nicht ein einzelner Rechner.' },
+      { act: 'Ausmaß über alle Standorte bestätigt', tool: 'Standortmeldungen', why: 'Auch nicht ein einzelnes Büro.' },
+      { act: 'ping und traceroute ausgeführt', tool: 'ping, tracert', why: 'Die Ergebnisse als Beleg an das Netzwerkteam geschickt.' },
+      { act: 'Mit Nachweis übergeben', tool: 'Netzwerkteam', why: 'Der Fehler lag beim ISP, nicht im Firmennetz.' },
+    ],
+    claim: 'Erst auf einem zweiten Gerät ausschließen, dann „gelöst“ sagen.', claimLabel: 'Wie ich arbeite',
+    workH: 'Was ich gebaut habe', filterLegend: 'Projekte anzeigen',
+    filters: { all: 'Alle', web: 'Web', data: 'Daten', desktop: 'Desktop' },
+    heads: ['Projekt', 'Technik', 'Was ich gemacht habe'],
+    projects: [
+      { name: 'NemoClaw-Webanwendung', kind: 'web', stack: 'KI-Dokumenten-App', did: 'API-Schlüssel aus dem Client in Umgebungsvariablen im Backend verlegt.' },
+      { name: 'Backend-API', kind: 'web', stack: stack.fastapi, did: 'REST-Endpunkte gebaut und getestet.' },
+      { name: 'Datenintegration', kind: 'data', stack: stack.nodered, did: 'Ein Flow, der eingehende Daten in eine MySQL-Datenbank schreibt.' },
+      { name: 'Desktop-Spiel', kind: 'desktop', stack: stack.wpf, did: 'Ein kleines Windows-Spiel.' },
+    ],
+    count: '{n} von {t} Projekten',
+    toolH: 'Werkzeugkasten',
+    tiles: {
+      desktopH: 'Desktop-Support',
+      desktopP: 'Installation und Imaging von Windows 10 und 11. HP- und Dell-Laptops, die am ersten Arbeitstag bereitstehen. Drucker, Peripherie, Akkutausch, Virenscans und Besprechungsräume, die vor dem Meeting geprüft sind.',
+      netH: 'Netzwerk', net: ['VPN und Okta', 'TCP/IP, DNS, DHCP', 'ping und traceroute'],
+      codeH: 'Code', code: ['Python, JavaScript', 'C#, C/C++, Java', 'Visual Basic'],
+      dataH: 'Daten und Tools', data: ['SQL, MySQL', 'Node-RED, Deno', 'Spring, WPF'],
+      langH: 'Sprachen', unit: 'TOEIC, 2025', langsP: 'Mandarin als Muttersprache. Japanisch im Alltag.',
+    },
+    expH: 'Wo ich gearbeitet habe',
+    jobs: [
+      { when: '2026', role: 'Wartungstechniker für Anlagen (Vertrag)', where: 'TSMC-Fab, Hsinchu', did: 'Loadports für FOUP- und FOSB-Waferträger geprüft und Fehler behoben.' },
+      { when: 'Juni 2023 bis Mai 2024', role: 'IT-Helpdesk-Assistenzingenieur, Welltake', where: 'Vor Ort bei Synopsys und Realtek', did: 'Laptops für neue Mitarbeitende eingerichtet, Hardware-, Netzwerk- und VPN-Fehler behoben, das Inventar geführt.' },
+      { when: 'Studium', role: 'Informatik und Informationstechnik', where: 'National Quemoy University', did: 'Programmierung, Datenbanken und Webentwicklung.' },
+      { when: '2020', role: 'Berufsausbildung Datenverarbeitung', where: 'Hsiang Shan Senior High School', did: 'Wo es mit Computern anfing.' },
+    ],
+    contactH: 'Jemand für den Helpdesk gesucht?',
+    contactLead: 'Offen für Stellen im IT-Support und als Junior-Entwickler, auf Mandarin, Englisch oder etwas Japanisch.',
+    copy: 'Adresse kopieren', copied: 'Kopiert', copyOk: 'Die Adresse ist in der Zwischenablage.', copyFail: 'Kopieren ist hier blockiert. Markiere die Adresse oben stattdessen.',
+    foot: { email: 'E-Mail', top: 'Nach oben', legal: '© 2026 Eli Lin. Hsinchu, Taiwan.' },
   },
 
   zh: {
