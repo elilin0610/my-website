@@ -8,30 +8,33 @@ const t = strings[lang];
 const here = langs.find((l) => l.id === lang)!;
 const filters = ['all', 'web', 'data', 'desktop'] as const;
 const cjkFont: Partial<Record<Lang, string>> = {
-  zh: 'family=Noto+Sans+TC:wght@400;500',
-  ja: 'family=Noto+Sans+JP:wght@400;500',
+  zh: 'family=Noto+Sans+TC:wght@400;500;700',
+  ja: 'family=Noto+Sans+JP:wght@400;500;700',
 };
 const extra = cjkFont[lang] ? `&${cjkFont[lang]}` : '';
+const abs = (p: string) => new URL(p, Astro.site).href;
+const pad = (n: number) => String(n + 1).padStart(2, '0');
 ---
 
 <html lang={here.html}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="color-scheme" content="dark" />
+    <meta name="color-scheme" content="light" />
+    <meta name="theme-color" content="#f6f2ea" />
     <title>{t.title}</title>
     <meta name="description" content={t.description} />
     <meta property="og:title" content="Eli Lin" />
     <meta property="og:description" content={t.description} />
     <meta property="og:type" content="website" />
-    {langs.map((l) => <link rel="alternate" hreflang={l.html} href={new URL(l.path, Astro.site).href} />)}
-    <link rel="alternate" hreflang="x-default" href={new URL("/", Astro.site).href} />
-    <link rel="canonical" href={new URL(here.path, Astro.site).href} />
-    <meta property="og:url" content={new URL(here.path, Astro.site).href} />
+    <meta property="og:url" content={abs(here.path)} />
+    <link rel="canonical" href={abs(here.path)} />
+    {langs.map((l) => <link rel="alternate" hreflang={l.html} href={abs(l.path)} />)}
+    <link rel="alternate" hreflang="x-default" href={abs('/')} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href={`https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@400;500&family=Atkinson+Hyperlegible+Mono:wght@400;500${extra}&display=swap`} rel="stylesheet" />
+    <link href={`https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:wght@400..600${extra}&display=swap`} rel="stylesheet" />
     <script is:inline>document.documentElement.classList.add('js');</script>
     {lang === 'en' && (
       <script is:inline>
@@ -48,12 +51,13 @@ const extra = cjkFont[lang] ? `&${cjkFont[lang]}` : '';
   </head>
   <body>
     <a class="skip" href="#main">{t.skip}</a>
+    <div class="progress" aria-hidden="true"></div>
 
-    <header class="slab">
-      <div class="container slab__inner">
-        <a class="wordmark" href={here.path} lang="en">Eli Lin</a>
+    <header class="bar">
+      <div class="bar__inner">
+        <a class="wordmark" href={here.path} lang="en"><span class="wordmark__dot" aria-hidden="true"></span>Eli Lin</a>
         <nav aria-label="Sections">
-          <ul class="slab__links">
+          <ul class="bar__links">
             <li><a href="#case">{t.nav.case}</a></li>
             <li><a href="#work">{t.nav.work}</a></li>
             <li><a href="#toolkit">{t.nav.toolkit}</a></li>
@@ -65,54 +69,56 @@ const extra = cjkFont[lang] ? `&${cjkFont[lang]}` : '';
             <a href={l.path} hreflang={l.html} lang={l.html} data-lang={l.id} aria-current={l.id === lang ? 'page' : undefined}>{l.label}</a>
           ))}
         </nav>
-        <a class="btn btn--quiet slab__action" href={`mailto:${email}`}>{t.nav.email}</a>
       </div>
     </header>
 
     <main id="main">
       <section class="hero" id="top">
-        <div class="container hero__inner">
-          <figure class="trace" aria-labelledby="trace-cap">
-            <div class="trace__head">
-              <span id="trace-cap">{t.traceCap}</span>
-              <span class="trace__sub">{t.traceSub}</span>
-            </div>
-            <ol class="trace__hops">
-              {t.hops.map((h, i) => (
-                <li class:list={['hop', { 'hop--fault': h.fault }]} style={`--i:${i}`}>
-                  <span class="hop__line" aria-hidden="true"></span>
-                  <span class="hop__name">{h.name}</span>
-                  <span class:list={['chip', h.fault ? 'chip--bad' : 'chip--ok']}>{h.status}</span>
-                  <span class="hop__note">{h.note}</span>
-                </li>
-              ))}
-            </ol>
-          </figure>
-
-          <div class="hero__foot">
-            <h1>{t.h1.split(String.fromCharCode(10)).map((line, i) => <>{i > 0 && <br />}{line}</>)}</h1>
+        <div class="container">
+          <h1 class="hero__h">
+            {t.h1.split(String.fromCharCode(10)).map((line, i) => <>{i > 0 && <br />}<span class="rise" style={`--d:${i}`}>{line}</span></>)}
+          </h1>
+          <div class="hero__grid">
             <div class="hero__side">
               <p class="lead">{t.lead}</p>
               <div class="actions">
                 <a class="btn btn--primary" href={`mailto:${email}`}>{t.ctaEmail}</a>
-                <a class="btn btn--quiet" href="#case">{t.ctaCase}</a>
+                <a class="btn" href="#case">{t.ctaCase}</a>
               </div>
             </div>
+
+            <figure class="ticket" aria-labelledby="ticket-cap">
+              <div class="ticket__head">
+                <span id="ticket-cap" class="ticket__title">{t.traceCap}</span>
+                <span class="ticket__sub">{t.traceSub}</span>
+              </div>
+              <ol class="ticket__hops">
+                {t.hops.map((h, i) => (
+                  <li class:list={['hop', { 'hop--fault': h.fault }]} style={`--i:${i}`}>
+                    <span class="hop__pin" aria-hidden="true"></span>
+                    <span class="hop__name">{h.name}</span>
+                    <span class:list={['tag', h.fault ? 'tag--bad' : 'tag--ok']}>{h.status}</span>
+                    <span class="hop__note">{h.note}</span>
+                  </li>
+                ))}
+              </ol>
+            </figure>
           </div>
         </div>
       </section>
 
       <section class="case" id="case" aria-labelledby="case-h">
-        <div class="container grid12">
-          <div class="case__head">
+        <div class="container">
+          <header class="sec-head reveal">
             <h2 id="case-h">{t.caseH}</h2>
             <p class="lead">{t.caseLead}</p>
-          </div>
-          <ol class="trail">
-            {t.trail.map((s) => (
-              <li class="trail__row">
+          </header>
+          <ol class="steps">
+            {t.trail.map((s, i) => (
+              <li class="step reveal">
+                <span class="step__n" aria-hidden="true">{pad(i)}</span>
                 <h3>{s.act}</h3>
-                <code class="measured">{s.tool}</code>
+                <code class="code">{s.tool}</code>
                 <p>{s.why}</p>
               </li>
             ))}
@@ -122,13 +128,14 @@ const extra = cjkFont[lang] ? `&${cjkFont[lang]}` : '';
 
       <section class="claim" aria-label={t.claimLabel}>
         <div class="container">
+          <p class="claim__label">{t.claimLabel}</p>
           <p class="claim__text">{t.claim}</p>
         </div>
       </section>
 
       <section class="work" id="work" aria-labelledby="work-h">
         <div class="container">
-          <div class="split-head">
+          <header class="sec-head sec-head--row reveal">
             <h2 id="work-h">{t.workH}</h2>
             <fieldset class="seg" data-filter>
               <legend class="visually-hidden">{t.filterLegend}</legend>
@@ -139,67 +146,63 @@ const extra = cjkFont[lang] ? `&${cjkFont[lang]}` : '';
                 </>
               ))}
             </fieldset>
-          </div>
-          <table class="index">
-            <thead>
-              <tr>{t.heads.map((h) => <th scope="col">{h}</th>)}</tr>
-            </thead>
-            <tbody>
-              {t.projects.map((p, i) => (
-                <tr data-kind={p.kind} style={`view-transition-name: project-${i}`} class:list={{ 'index__lead': i === 0 }}>
-                  <th scope="row">{p.name}</th>
-                  <td><code class="measured">{p.stack}</code></td>
-                  <td>{p.did}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <p class="index__empty" aria-live="polite" data-count={t.count}></p>
+          </header>
+          <ul class="cards" data-projects>
+            {t.projects.map((p, i) => (
+              <li class:list={['card', 'reveal', { 'card--lead': i === 0 }]} data-kind={p.kind} style={`view-transition-name: project-${i}`}>
+                <span class="card__kind">{t.filters[p.kind]}</span>
+                <h3>{p.name}</h3>
+                <p>{p.did}</p>
+                <code class="code">{p.stack}</code>
+              </li>
+            ))}
+          </ul>
+          <p class="count" aria-live="polite" data-count={t.count}></p>
         </div>
       </section>
 
       <section class="toolkit" id="toolkit" aria-labelledby="tool-h">
         <div class="container">
-          <h2 id="tool-h">{t.toolH}</h2>
+          <header class="sec-head reveal"><h2 id="tool-h">{t.toolH}</h2></header>
           <div class="bento">
-            <article class="tile tile--lead">
+            <article class="tile tile--lead reveal">
               <h3>{t.tiles.desktopH}</h3>
               <p>{t.tiles.desktopP}</p>
             </article>
-            <article class="tile">
+            <article class="tile tile--score reveal">
+              <h3>{t.tiles.langH}</h3>
+              <p class="score">755</p>
+              <p class="score__unit">{t.tiles.unit}</p>
+              <p>{t.tiles.langsP}</p>
+            </article>
+            <article class="tile reveal">
               <h3>{t.tiles.netH}</h3>
               <ul class="plain">{t.tiles.net.map((x) => <li>{x}</li>)}</ul>
             </article>
-            <article class="tile">
+            <article class="tile reveal">
               <h3>{t.tiles.codeH}</h3>
               <ul class="plain">{t.tiles.code.map((x) => <li>{x}</li>)}</ul>
             </article>
-            <article class="tile">
+            <article class="tile reveal">
               <h3>{t.tiles.dataH}</h3>
               <ul class="plain">{t.tiles.data.map((x) => <li>{x}</li>)}</ul>
-            </article>
-            <article class="tile tile--reading">
-              <h3>{t.tiles.langH}</h3>
-              <p class="reading">755</p>
-              <p class="reading__unit">{t.tiles.unit}</p>
-              <p>{t.tiles.langsP}</p>
             </article>
           </div>
         </div>
       </section>
 
       <section class="experience" id="experience" aria-labelledby="exp-h">
-        <div class="container grid12">
-          <h2 id="exp-h" class="experience__h">{t.expH}</h2>
-          <ol class="rows">
+        <div class="container">
+          <header class="sec-head reveal"><h2 id="exp-h">{t.expH}</h2></header>
+          <ol class="timeline">
             {t.jobs.map((j) => (
-              <li class="row">
-                <span class="measured">{j.when}</span>
-                <div>
+              <li class="job reveal">
+                <span class="job__when">{j.when}</span>
+                <div class="job__body">
                   <h3>{j.role}</h3>
-                  <p class="row__where">{j.where}</p>
+                  <p class="job__where">{j.where}</p>
+                  <p>{j.did}</p>
                 </div>
-                <p>{j.did}</p>
               </li>
             ))}
           </ol>
@@ -207,36 +210,29 @@ const extra = cjkFont[lang] ? `&${cjkFont[lang]}` : '';
       </section>
 
       <section class="contact" id="contact" aria-labelledby="contact-h">
-        <div class="container grid12">
-          <div class="contact__head">
-            <h2 id="contact-h">{t.contactH}</h2>
-            <p class="lead">{t.contactLead}</p>
+        <div class="container">
+          <h2 id="contact-h">{t.contactH}</h2>
+          <p class="lead">{t.contactLead}</p>
+          <a class="contact__email" href={`mailto:${email}`}>{email}</a>
+          <div class="actions">
+            <button class="btn btn--light" type="button" data-copy={email} data-label={t.copy} data-done={t.copied} data-ok={t.copyOk} data-fail={t.copyFail}>{t.copy}</button>
+            <a class="btn btn--ghost" href={linkedin} rel="me noopener" target="_blank">LinkedIn</a>
+            {github && <a class="btn btn--ghost" href={github} rel="me noopener" target="_blank">GitHub</a>}
           </div>
-          <div class="contact__body">
-            <a class="contact__email" href={`mailto:${email}`}>{email}</a>
-            <div class="actions">
-              <button class="btn btn--quiet" type="button" data-copy={email} data-label={t.copy} data-done={t.copied} data-ok={t.copyOk} data-fail={t.copyFail}>{t.copy}</button>
-              <a class="btn btn--quiet" href={linkedin} rel="me noopener" target="_blank">LinkedIn</a>
-              {github && <a class="btn btn--quiet" href={github} rel="me noopener" target="_blank">GitHub</a>}
-            </div>
-            <p class="copy-status" aria-live="polite" data-copy-status></p>
-          </div>
+          <p class="copy-status" aria-live="polite" data-copy-status></p>
         </div>
       </section>
     </main>
 
-    <footer class="mast">
-      <div class="container">
-        <p class="mast__word" aria-hidden="true" lang="en">Eli Lin</p>
-        <div class="mast__row">
-          <ul class="mast__links">
-            <li><a href={`mailto:${email}`}>{t.foot.email}</a></li>
-            <li><a href={linkedin} rel="me noopener" target="_blank">LinkedIn</a></li>
-            {github && <li><a href={github} rel="me noopener" target="_blank">GitHub</a></li>}
-            <li><a href="#top">{t.foot.top}</a></li>
-          </ul>
-          <p class="mast__legal">{t.foot.legal}</p>
-        </div>
+    <footer class="foot">
+      <div class="container foot__row">
+        <p class="foot__legal">{t.foot.legal}</p>
+        <ul class="foot__links">
+          <li><a href={`mailto:${email}`}>{t.foot.email}</a></li>
+          <li><a href={linkedin} rel="me noopener" target="_blank">LinkedIn</a></li>
+          {github && <li><a href={github} rel="me noopener" target="_blank">GitHub</a></li>}
+          <li><a href="#top">{t.foot.top}</a></li>
+        </ul>
       </div>
     </footer>
 
@@ -247,16 +243,16 @@ const extra = cjkFont[lang] ? `&${cjkFont[lang]}` : '';
       });
 
       // Project filter, animated with the View Transitions API where it exists.
-      const rows = [...document.querySelectorAll<HTMLTableRowElement>('.index tbody tr')];
+      const cards = [...document.querySelectorAll<HTMLElement>('[data-projects] [data-kind]')];
       const count = document.querySelector<HTMLElement>('[data-count]');
       const apply = (kind: string) => {
         let shown = 0;
-        rows.forEach((r) => {
-          const on = kind === 'all' || r.dataset.kind === kind;
-          r.hidden = !on;
+        cards.forEach((c) => {
+          const on = kind === 'all' || c.dataset.kind === kind;
+          c.hidden = !on;
           if (on) shown++;
         });
-        if (count) count.textContent = (count.dataset.count ?? '').replace('{n}', String(shown)).replace('{t}', String(rows.length));
+        if (count) count.textContent = (count.dataset.count ?? '').replace('{n}', String(shown)).replace('{t}', String(cards.length));
       };
       document.querySelectorAll<HTMLInputElement>('[data-filter] input').forEach((input) => {
         input.addEventListener('change', () => {
