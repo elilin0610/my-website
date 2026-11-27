@@ -1,0 +1,79 @@
+---
+import '../styles/site.css';
+import { langs } from '../i18n/strings';
+
+// One page for every language: Cloudflare Pages serves this for any path that doesn't exist.
+const lines: Record<string, { msg: string; home: string }> = {
+  en: { msg: 'This page doesn’t exist.', home: 'Back to the home page' },
+  de: { msg: 'Diese Seite gibt es nicht.', home: 'Zur Startseite' },
+  zh: { msg: '這個頁面不存在。', home: '回到首頁' },
+  ja: { msg: 'このページは存在しません。', home: 'トップページへ' },
+  ko: { msg: '이 페이지는 존재하지 않습니다.', home: '홈으로 돌아가기' },
+};
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <meta name="color-scheme" content="light" />
+    <meta name="theme-color" content="#1f2023" />
+    <title>404 · Eli</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet" />
+  </head>
+  <body class="nf">
+    <header class="bar">
+      <div class="container bar__inner">
+        <a class="wordmark" href="/"><span class="wordmark__mark" aria-hidden="true">EL</span><span class="wordmark__text">Eli Lin</span></a>
+      </div>
+    </header>
+
+    <main class="nf__main">
+      <div class="container">
+        <h1 class="nf__code">404</h1>
+        <ul class="nf__list">
+          {langs.map((l) => (
+            <li lang={l.html}>
+              <span class="nf__msg">{lines[l.id].msg}</span>
+              <a class="nf__home" href={l.path}>{lines[l.id].home}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </main>
+
+    <footer class="foot">
+      <div class="container foot__row">
+        <p class="foot__legal">© 2026 Eli Lin</p>
+        <a href="/">elilin.dev</a>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  .nf { min-height: 100dvh; display: grid; grid-template-rows: auto 1fr auto; }
+  .nf__main { padding-block: var(--space-2xl) var(--section-gap-s); background: var(--color-night); color: var(--color-on-night); }
+  .nf__code { max-width: none; font-size: clamp(8rem, 34vw, 26rem); font-weight: 900; font-stretch: 112%; letter-spacing: -0.06em; line-height: 0.8; padding-bottom: var(--space-lg); border-bottom: var(--rule-hair) solid var(--color-on-night); }
+  .nf__list { margin: 0; padding: 0; list-style: none; }
+  .nf__list li { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-sm) var(--space-lg); padding-block: var(--space-md); border-bottom: var(--rule-hair) solid var(--color-night-2); }
+  .nf__list li:first-child .nf__msg { font-size: var(--text-2xl); font-weight: 900; color: var(--color-on-night); }
+  .nf__msg { font-size: var(--text-lg); font-weight: 700; color: var(--color-on-night-2); }
+  .nf__home { display: inline-flex; align-items: center; min-height: 44px; font-weight: 700; color: var(--color-accent); text-decoration: none; }
+  .nf__home::after { content: "→"; margin-left: var(--space-xs); transition: transform var(--dur-short) var(--ease-out); }
+  .nf__home:hover { color: var(--color-on-night); }
+  .nf__home:hover::after { transform: translateX(4px); }
+  .nf__home:focus-visible { outline-color: var(--color-accent); }
+  .nf .foot a { text-decoration: none; }
+  :lang(zh-Hant-TW) .nf__msg { font-family: "Archivo", "Noto Sans TC", "Microsoft JhengHei", sans-serif; }
+  :lang(ja) .nf__msg { font-family: "Archivo", "Noto Sans JP", "Yu Gothic UI", "Meiryo", sans-serif; }
+  :lang(ko) .nf__msg { font-family: "Archivo", "Noto Sans KR", "Malgun Gothic", sans-serif; }
+  @media (prefers-reduced-motion: no-preference) {
+    .nf__code { animation: nf-in 900ms var(--ease-out) both; }
+  }
+  @keyframes nf-in { from { opacity: 0; clip-path: inset(0 100% 0 0); } to { opacity: 1; clip-path: inset(0 0 0 0); } }
+</style>
