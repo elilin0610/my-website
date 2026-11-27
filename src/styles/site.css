@@ -217,6 +217,11 @@ h2 { max-width: 16ch; line-height: 0.95; }
 :lang(ja) h1, :lang(ja) h2, :lang(ja) h3, :lang(ja) .claim__text, :lang(ja) .lead { word-break: auto-phrase; }
 :lang(zh-Hant-TW) .lead, :lang(ja) .lead, :lang(ja) h3 { overflow-wrap: anywhere; }
 :lang(de) h1, :lang(de) h2, :lang(de) h3, :lang(de) p, :lang(de) dd { hyphens: auto; }
+/* Korean: keep words whole when wrapping, a touch more leading, no negative tracking on display type. */
+:lang(ko) body { line-height: 1.7; word-break: keep-all; }
+:lang(ko) .hero__h { font-size: clamp(2.75rem, 7vw, 7rem); line-height: 1.12; letter-spacing: 0; }
+:lang(ko) h2, :lang(ko) h3, :lang(ko) .claim__text { line-height: 1.25; letter-spacing: 0; }
+:lang(ko) .lead, :lang(ko) h3, :lang(ko) .contact__email { overflow-wrap: anywhere; }
 
 /* ---------- motion (all optional; content is visible without it) ---------- */
 @media (prefers-reduced-motion: no-preference) {

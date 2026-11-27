@@ -78,4 +78,21 @@ export const about: Record<Lang, About> = {
     ],
     streamLabel: '配信', streamNote: 'Apex、LoL、VALORANT の配信もしています',
   },
+  ko: {
+    hello: '안녕하세요, Eli Lin입니다',
+    photoAlt: '소파에 늘어져 있는 흑백 고양이',
+    socialsLabel: '다른 곳에서', settings: '설정',
+    aboutNav: '소개',
+    aboutH: '소개',
+    aboutP: [
+      '대만 신주에서 일하는 IT 지원 담당자이자 주니어 개발자입니다.',
+      'Welltake 소속으로 Synopsys와 Realtek에 상주하며 1년 동안 헬프데스크를 맡았습니다. 신입 사원의 노트북을 준비하고, 네트워크와 VPN 장애를 근본 원인까지 추적했습니다. 틈틈이 Python, C#, Node-RED로 작은 도구와 웹 앱도 만듭니다.',
+    ],
+    facts: [
+      { k: '거주지', v: '대만 신주' },
+      { k: '언어', v: '중국어, 영어, 일본어' },
+      { k: '희망 직무', v: 'IT 지원 또는 주니어 개발' },
+    ],
+    streamLabel: '방송', streamNote: 'Apex, LoL, 발로란트 방송도 합니다',
+  },
 };

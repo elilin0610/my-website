@@ -38,3 +38,8 @@
   --font-body: "Archivo", "Noto Sans JP", "Hiragino Sans", "Yu Gothic UI", "Meiryo", sans-serif;
   --tracking-display: 0;
 }
+:root:lang(ko) {
+  --font-display: "Archivo", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-body: "Archivo", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --tracking-display: 0;
+}

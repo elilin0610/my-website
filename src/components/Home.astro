@@ -12,12 +12,13 @@ const filters = ['all', 'web', 'data', 'desktop'] as const;
 const cjkFont: Partial<Record<Lang, string>> = {
   zh: 'family=Noto+Sans+TC:wght@400;700;900',
   ja: 'family=Noto+Sans+JP:wght@400;700;900',
+  ko: 'family=Noto+Sans+KR:wght@400;700;900',
 };
 const extra = cjkFont[lang] ? `&${cjkFont[lang]}` : '';
 const abs = (p: string) => new URL(p, Astro.site).href;
 const pad = (n: number) => String(n + 1).padStart(2, '0');
 const a = about[lang];
-const short: Record<Lang, string> = { en: 'EN', de: 'DE', zh: '中', ja: '日' };
+const short: Record<Lang, string> = { en: 'EN', de: 'DE', zh: '中', ja: '日', ko: '한' };
 // Drop a photo at public/portrait.jpg and it replaces the monogram.
 const hasPhoto = fs.existsSync('public/portrait.jpg');
 ---
@@ -48,9 +49,10 @@ const hasPhoto = fs.existsSync('public/portrait.jpg');
         try {
           const saved = localStorage.getItem('lang');
           const pref = (navigator.languages || [navigator.language]).map((l) => l.toLowerCase());
-          const first = saved || pref.find((l) => /^(zh|ja|de|en)/.test(l)) || 'en';
+          const first = saved || pref.find((l) => /^(zh|ja|ko|de|en)/.test(l)) || 'en';
           if (first.startsWith('zh')) location.replace('/zh/');
           else if (first.startsWith('ja')) location.replace('/ja/');
+          else if (first.startsWith('ko')) location.replace('/ko/');
           else if (first.startsWith('de')) location.replace('/de/');
         } catch (e) {}
       </script>

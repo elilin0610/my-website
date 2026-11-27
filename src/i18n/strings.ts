@@ -1,10 +1,11 @@
-export type Lang = 'en' | 'de' | 'zh' | 'ja';
+export type Lang = 'en' | 'de' | 'zh' | 'ja' | 'ko';
 
 export const langs: { id: Lang; label: string; html: string; path: string }[] = [
   { id: 'en', label: 'English', html: 'en', path: '/' },
   { id: 'de', label: 'Deutsch', html: 'de', path: '/de/' },
   { id: 'zh', label: '中文（繁體）', html: 'zh-Hant-TW', path: '/zh/' },
   { id: 'ja', label: '日本語', html: 'ja', path: '/ja/' },
+  { id: 'ko', label: '한국어', html: 'ko', path: '/ko/' },
 ];
 
 export const email = 'elilin0610@gmail.com';
@@ -254,5 +255,60 @@ export const strings: Record<Lang, Strings> = {
     contactLead: 'IT サポートとジュニア開発のポジションを探しています。中国語、英語、日常会話レベルの日本語で対応できます。',
     copy: 'アドレスをコピー', copied: 'コピーしました', copyOk: 'アドレスをクリップボードにコピーしました。', copyFail: 'ここではコピーできません。上のアドレスを選択してください。',
     foot: { email: 'メール', top: 'ページの先頭へ', legal: '© 2026 Eli Lin。台湾・新竹。' },
+  },
+
+  ko: {
+    title: 'Eli',
+    description: 'Eli Lin은 대만 신주의 IT 지원 담당자이자 주니어 개발자입니다. Synopsys와 Realtek에서 헬프데스크를 맡았고, Python, C#, Node-RED로 프로젝트를 만들었습니다.',
+    skip: '본문으로 건너뛰기', langLabel: '언어',
+    nav: { case: '사례', work: '프로젝트', toolkit: '기술', experience: '경력', email: '이메일' },
+    traceCap: 'Synopsys VPN 장애', traceSub: '헬프데스크에서 원인 추적',
+    hops: [
+      { name: '노트북', status: '제외', note: '다른 기기에서도 같은 증상' },
+      { name: 'Okta 로그인', status: '제외', note: '계정은 정상적으로 로그인됨' },
+      { name: '한 사무실', status: '제외', note: '모든 지점에서 장애 발생' },
+      { name: 'ISP', status: '장애 지점', note: 'ping과 traceroute로 특정', fault: true },
+    ],
+    h1: '고장 난 곳을\n찾아냅니다.', lead: 'Eli Lin, 대만 신주의 IT 지원 담당자이자 주니어 개발자입니다.',
+    ctaEmail: 'Eli에게 메일 보내기', ctaCase: 'VPN 사례 보기',
+    caseH: '장애, 단계별로', caseLead: '확인할 때마다 용의자가 하나씩 줄었습니다.',
+    trail: [
+      { act: 'Okta 확인', tool: 'Okta', why: '로그인이 되었으니 계정 문제는 아니었습니다.' },
+      { act: '다른 기기로 테스트', tool: '두 번째 노트북', why: '같은 증상이라 특정 기기의 문제가 아니었습니다.' },
+      { act: '전 지점 영향 확인', tool: '지점 보고', why: '한 사무실만의 문제도 아니었습니다.' },
+      { act: 'ping과 traceroute 실행', tool: 'ping, tracert', why: '결과를 증거로 네트워크 팀에 전달했습니다.' },
+      { act: '증거와 함께 이관', tool: '네트워크 팀', why: '원인은 회사 네트워크가 아니라 ISP에 있었습니다.' },
+    ],
+    claim: '해결됐다고 하기 전에, 다른 기기에서 먼저 확인합니다.', claimLabel: '일하는 방식',
+    workH: '만든 것들', filterLegend: '프로젝트 보기',
+    filters: { all: '전체', web: '웹', data: '데이터', desktop: '데스크톱' },
+    heads: ['프로젝트', '기술', '한 일'],
+    projects: [
+      { name: 'NemoClaw 웹 애플리케이션', kind: 'web', stack: 'AI 문서 앱', did: 'API 키 설정을 클라이언트에서 백엔드 환경 변수로 옮겼습니다.' },
+      { name: '백엔드 API', kind: 'web', stack: stack.fastapi, did: 'REST 엔드포인트를 만들고 테스트했습니다.' },
+      { name: '데이터 연동', kind: 'data', stack: stack.nodered, did: '들어오는 데이터를 MySQL 데이터베이스에 기록하는 플로우.' },
+      { name: '데스크톱 게임', kind: 'desktop', stack: stack.wpf, did: '작은 Windows 게임.' },
+    ],
+    count: '프로젝트 {t}개 중 {n}개 표시',
+    toolH: '툴킷',
+    tiles: {
+      desktopH: '데스크톱 지원',
+      desktopP: 'Windows 10·11 설치와 이미징. 신입 사원의 첫 출근일에 맞춰 준비한 HP·Dell 노트북. 프린터, 주변기기, 배터리 교체, 바이러스 검사, 회의 전에 미리 점검한 회의실.',
+      netH: '네트워크', net: ['VPN과 Okta', 'TCP/IP, DNS, DHCP', 'ping과 traceroute'],
+      codeH: '코드', code: ['Python, JavaScript', 'C#, C/C++, Java', 'Visual Basic'],
+      dataH: '데이터와 도구', data: ['SQL, MySQL', 'Node-RED, Deno', 'Spring, WPF'],
+      langH: '언어', unit: 'TOEIC, 2025년', langsP: '중국어는 모국어, 일본어는 일상 회화 수준.',
+    },
+    expH: '경력',
+    jobs: [
+      { when: '2026년', role: '장비 유지보수 기술자 (계약직)', where: 'TSMC 팹, 신주', did: 'FOUP·FOSB 웨이퍼 캐리어용 로드포트를 점검하고 고장을 해결했습니다.' },
+      { when: '2023년 6월 ~ 2024년 5월', role: 'IT 헬프데스크 보조 엔지니어, Welltake', where: 'Synopsys, Realtek 상주', did: '신입 사원 노트북 세팅, 하드웨어·네트워크·VPN 장애 처리, 자산 관리.' },
+      { when: '재학', role: '컴퓨터공학 및 정보공학', where: '국립 진먼 대학교', did: '프로그래밍, 데이터베이스, 웹 개발.' },
+      { when: '2020년', role: '데이터 처리과 (직업 과정)', where: '신주시립 샹산 고등학교', did: '컴퓨터와의 인연이 시작된 곳.' },
+    ],
+    contactH: '헬프데스크 인재를 찾고 계신가요?',
+    contactLead: 'IT 지원과 주니어 개발 직무를 찾고 있습니다. 중국어, 영어, 간단한 일본어로 소통할 수 있습니다.',
+    copy: '주소 복사', copied: '복사됨', copyOk: '주소가 클립보드에 복사되었습니다.', copyFail: '여기서는 복사가 막혀 있습니다. 위의 주소를 직접 선택해 주세요.',
+    foot: { email: '이메일', top: '맨 위로', legal: '© 2026 Eli Lin. 대만 신주.' },
   },
 };

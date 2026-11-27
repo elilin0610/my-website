@@ -5,7 +5,7 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
   site: 'https://elilin.dev',
   i18n: {
-    locales: ['en', 'de', 'zh', 'ja'],
+    locales: ['en', 'de', 'zh', 'ja', 'ko'],
     defaultLocale: 'en',
     routing: { prefixDefaultLocale: false },
   },
