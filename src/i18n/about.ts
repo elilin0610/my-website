@@ -12,7 +12,7 @@ export type About = {
 export const about: Record<Lang, About> = {
   en: {
     hello: 'Hi, I’m Eli Lin',
-    photoAlt: 'Eli Lin',
+    photoAlt: 'A black and white cat stretched out on a sofa',
     socialsLabel: 'Elsewhere',
     aboutNav: 'About',
     aboutH: 'About me',
@@ -29,7 +29,7 @@ export const about: Record<Lang, About> = {
   },
   zh: {
     hello: '嗨，我是 Eli Lin',
-    photoAlt: 'Eli Lin',
+    photoAlt: '一隻黑白貓攤在沙發上',
     socialsLabel: '其他平台',
     aboutNav: '關於我',
     aboutH: '關於我',
@@ -46,7 +46,7 @@ export const about: Record<Lang, About> = {
   },
   ja: {
     hello: 'こんにちは、Eli Lin です',
-    photoAlt: 'Eli Lin',
+    photoAlt: 'ソファでくつろぐ白黒の猫',
     socialsLabel: 'リンク',
     aboutNav: '自己紹介',
     aboutH: '自己紹介',

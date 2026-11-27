@@ -98,9 +98,9 @@ const hasPhoto = fs.existsSync('public/portrait.jpg');
             </ul>
           </div>
 
-          <figure class="portrait">
+          <figure class:list={["portrait", { "portrait--photo": hasPhoto }]}>
             {hasPhoto
-              ? <img src="/portrait.jpg" alt={a.photoAlt} width="720" height="900" />
+              ? <img src="/portrait.jpg" alt={a.photoAlt} width="400" height="400" />
               : <span class="portrait__mono" aria-hidden="true" lang="en">EL</span>}
             <figcaption class="portrait__tag">
               <span class="portrait__dot" aria-hidden="true"></span>{a.facts[2].v}

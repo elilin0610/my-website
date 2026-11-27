@@ -63,7 +63,8 @@ a:hover { color: var(--color-accent); }
 .socials a:hover { text-decoration-color: var(--color-accent); }
 
 .portrait { position: relative; margin: 0; aspect-ratio: 4 / 5; border-radius: calc(var(--radius-card) * 1.6); overflow: hidden; background: radial-gradient(120% 90% at 30% 10%, oklch(62% 0.2 266), var(--color-accent-2) 55%, var(--color-night)); box-shadow: var(--shadow-card); }
-.portrait img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.portrait img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+.portrait--photo { aspect-ratio: 1; background: var(--color-paper-2); }
 .portrait__mono { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--font-display); font-size: clamp(6rem, 16vw, 13rem); font-weight: 800; letter-spacing: -0.06em; color: var(--color-on-accent); mix-blend-mode: soft-light; }
 .portrait::before { content: ""; position: absolute; inset: var(--space-md); border: 1.5px solid oklch(98% 0.01 266 / 0.35); border-radius: calc(var(--radius-card) * 1.6 - var(--space-md)); pointer-events: none; z-index: 1; }
 .portrait__tag { position: absolute; left: var(--space-lg); bottom: var(--space-lg); z-index: 2; display: inline-flex; align-items: center; gap: var(--space-xs); max-width: calc(100% - 2 * var(--space-lg)); padding: var(--space-xs) var(--space-md); border-radius: var(--radius-pill); background: var(--color-card); color: var(--color-ink); font-size: var(--text-sm); font-weight: 600; box-shadow: var(--shadow-card); }
@@ -234,6 +235,7 @@ a:hover { color: var(--color-accent); }
   .hero { padding-top: var(--space-2xl); }
   .hero__lead { font-size: var(--text-lg); }
   .portrait { max-width: none; aspect-ratio: 4 / 3; }
+  .portrait--photo { aspect-ratio: 1; }
   .facts { grid-template-columns: minmax(0, 1fr); }
   .ticket__head, .ticket__hops { padding-inline: var(--space-lg); }
   .ticket__hops::before { left: calc(var(--space-lg) + 6px); }
