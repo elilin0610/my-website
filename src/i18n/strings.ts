@@ -82,8 +82,8 @@ export const strings: Record<Lang, Strings> = {
     expH: 'Where I have worked',
     jobs: [
       { when: '2026', role: 'Contract equipment maintenance technician', where: 'TSMC fab, Hsinchu', did: 'Inspected and troubleshot load ports for FOUP and FOSB wafer carriers.' },
+      { when: 'Sep 2024 to Jun 2026', role: 'Computer science and information engineering', where: 'National Quemoy University', did: 'Programming, databases and web development.' },
       { when: 'Jun 2023 to May 2024', role: 'IT helpdesk assistant engineer, Welltake', where: 'Onsite at Synopsys and Realtek', did: 'Set up new-hire laptops, fixed hardware, network and VPN faults, kept the inventory.' },
-      { when: 'Coursework', role: 'Computer science and information engineering', where: 'National Quemoy University', did: 'Programming, databases and web development.' },
       { when: '2020', role: 'Vocational program in data processing', where: 'Hsiang Shan Senior High School', did: 'Where the computers started.' },
     ],
     contactH: 'Need someone on the desk?',
@@ -137,8 +137,8 @@ export const strings: Record<Lang, Strings> = {
     expH: 'Wo ich gearbeitet habe',
     jobs: [
       { when: '2026', role: 'Wartungstechniker für Anlagen (Vertrag)', where: 'TSMC-Fab, Hsinchu', did: 'Loadports für FOUP- und FOSB-Waferträger geprüft und Fehler behoben.' },
+      { when: 'Sept. 2024 bis Juni 2026', role: 'Informatik und Informationstechnik', where: 'National Quemoy University', did: 'Programmierung, Datenbanken und Webentwicklung.' },
       { when: 'Juni 2023 bis Mai 2024', role: 'IT-Helpdesk-Assistenzingenieur, Welltake', where: 'Vor Ort bei Synopsys und Realtek', did: 'Laptops für neue Mitarbeitende eingerichtet, Hardware-, Netzwerk- und VPN-Fehler behoben, das Inventar geführt.' },
-      { when: 'Studium', role: 'Informatik und Informationstechnik', where: 'National Quemoy University', did: 'Programmierung, Datenbanken und Webentwicklung.' },
       { when: '2020', role: 'Berufsausbildung Datenverarbeitung', where: 'Hsiang Shan Senior High School', did: 'Wo es mit Computern anfing.' },
     ],
     contactH: 'Jemand für den Helpdesk gesucht?',
@@ -192,8 +192,8 @@ export const strings: Record<Lang, Strings> = {
     expH: '工作經歷',
     jobs: [
       { when: '2026', role: '設備維護技術員（約聘）', where: '台積電晶圓廠，新竹', did: '檢查並排除 FOUP、FOSB 晶圓載具 load port 的問題。' },
+      { when: '2024.09 至 2026.06', role: '資訊工程學系', where: '國立金門大學', did: '程式設計、資料庫與網頁開發。' },
       { when: '2023.06 至 2024.05', role: 'IT 服務台助理工程師，Welltake', where: '派駐 Synopsys 與 Realtek', did: '準備新進同仁的筆電，處理硬體、網路與 VPN 故障，維護設備清冊。' },
-      { when: '修課', role: '資訊工程學系', where: '國立金門大學', did: '程式設計、資料庫與網頁開發。' },
       { when: '2020', role: '資料處理科', where: '新竹市立香山高級中學', did: '和電腦結緣的起點。' },
     ],
     contactH: '需要服務台的人手嗎？',
@@ -247,8 +247,8 @@ export const strings: Record<Lang, Strings> = {
     expH: '経歴',
     jobs: [
       { when: '2026年', role: '設備保守技術者（契約）', where: 'TSMC 工場、新竹', did: 'FOUP・FOSB ウェーハキャリアのロードポートの点検とトラブル対応。' },
+      { when: '2024年9月から2026年6月', role: '資訊工程学系（情報工学）', where: '国立金門大学', did: 'プログラミング、データベース、Web 開発。' },
       { when: '2023年6月から2024年5月', role: 'IT ヘルプデスク アシスタントエンジニア、Welltake', where: 'Synopsys と Realtek に常駐', did: '新入社員用 PC のセットアップ、ハードウェア・ネットワーク・VPN 障害の対応、機器台帳の管理。' },
-      { when: '履修', role: '資訊工程学系（情報工学）', where: '国立金門大学', did: 'プログラミング、データベース、Web 開発。' },
       { when: '2020年', role: '資料処理科（職業課程）', where: '新竹市立香山高級中学', did: 'パソコンとの出会い。' },
     ],
     contactH: 'ヘルプデスクの人材をお探しですか？',
@@ -302,8 +302,8 @@ export const strings: Record<Lang, Strings> = {
     expH: '경력',
     jobs: [
       { when: '2026년', role: '장비 유지보수 기술자 (계약직)', where: 'TSMC 팹, 신주', did: 'FOUP·FOSB 웨이퍼 캐리어용 로드포트를 점검하고 고장을 해결했습니다.' },
+      { when: '2024년 9월 ~ 2026년 6월', role: '컴퓨터공학 및 정보공학', where: '국립 진먼 대학교', did: '프로그래밍, 데이터베이스, 웹 개발.' },
       { when: '2023년 6월 ~ 2024년 5월', role: 'IT 헬프데스크 보조 엔지니어, Welltake', where: 'Synopsys, Realtek 상주', did: '신입 사원 노트북 세팅, 하드웨어·네트워크·VPN 장애 처리, 자산 관리.' },
-      { when: '재학', role: '컴퓨터공학 및 정보공학', where: '국립 진먼 대학교', did: '프로그래밍, 데이터베이스, 웹 개발.' },
       { when: '2020년', role: '데이터 처리과 (직업 과정)', where: '신주시립 샹산 고등학교', did: '컴퓨터와의 인연이 시작된 곳.' },
     ],
     contactH: '헬프데스크 인재를 찾고 계신가요?',
