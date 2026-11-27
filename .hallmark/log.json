@@ -1,0 +1,29 @@
+[
+ {
+  "shape": "Manifesto",
+  "theme": "console",
+  "axes": "dark/grotesk-sans/chromatic-amber",
+  "hero": "Ledge",
+  "nav": "slab",
+  "footer": "mast",
+  "imagery": "none",
+  "photos": [],
+  "entry": "Synopsys VPN outage trace",
+  "fingerprint": "manifesto-ledge-slab-mast",
+  "sections": [
+   "hero",
+   "trail",
+   "statement",
+   "index",
+   "bento",
+   "rows",
+   "band",
+   "footer"
+  ],
+  "signature": "VPN outage traced hop by hop",
+  "waived": [],
+  "prompt": "personal website for Eli Lin, IT support and junior developer",
+  "date": "2026-11-27",
+  "mode": "build"
+ }
+]
